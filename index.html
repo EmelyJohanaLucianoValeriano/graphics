@@ -44,25 +44,25 @@
 
       <div class="card text-center">
         <div class="card-header">
-          Canvas de visualización
+          Canvas de visualización 3D
         </div>
         <div class="chart card-img-bottom">
             <canvas id="circlechart" width="640" height="480"></canvas>
           </div>
         <div class="card-body">
-          <h5 class="card-title">Gráfico</h5>
+          <h5 class="card-title">Visor de Modelo 3D</h5>
           
           <div class="input-group mb-3" style="max-width: 600px; margin: 0 auto;">
-            <span class="input-group-text" id="basic-addon1">Datos:</span>
-            <input type="text" id="datosEntrada" class="form-control" placeholder="00, 00, 00, 00, 00, 00" aria-label="Datos" aria-describedby="button-addon2">
-            <button class="btn btn-success" type="button" id="btnDibujar">Generar Gráfico</button>
+            <span class="input-group-text" id="basic-addon1">Archivo .txt:</span>
+            <input type="file" id="fileInput" class="form-control" accept=".txt" aria-describedby="button-addon2">
+            <button class="btn btn-primary" type="button" id="btnRotar">Mover Manecilla</button>
           </div>
           
-          <p class="card-text">Ingresa valores numéricos separados por comas para actualizar la gráfica.</p>
+          <p class="card-text">Sube tu archivo estructurado limpio para visualizar el reloj y animar sus piezas.</p>
         </div>
         
         <div class="card-footer text-muted">
-          Práctica 3
+          Proyecto Final
         </div>
       </div>
 
