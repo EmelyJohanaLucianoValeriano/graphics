@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <title>Graficador de Funciones - Tarea 2</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./style/index.css">
+</head>
+<body class="bg-secondary p-4">
+    <div class="container">
+        <div class="card text-center shadow">
+            <div class="card-header bg-dark text-white">Graficador de Funciones Interactivo</div>
+            <div class="card-body">
+                <div class="row g-2 mb-4 justify-content-center">
+                    <div class="col-md-6">
+                        <div class="input-group">
+                            <span class="input-group-text">f(x) =</span>
+                            <input type="text" id="fun-input" class="form-control" value="x*x" placeholder="Ej: x*x">
+                            <button class="btn btn-primary" id="btn-draw">Dibujar</button>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="btn-group w-100">
+                            <button class="btn btn-outline-secondary" id="btn-zoom-in">Zoom +</button>
+                            <button class="btn btn-outline-secondary" id="btn-zoom-out">Zoom -</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="chart border rounded bg-white p-2">
+                    <canvas id="circlechart" width="800" height="500"></canvas>
+                </div>
+            </div>
+            <div class="card-footer text-muted">ESCRIBIR EN MINUSCULAS 'x'.</div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="./dist/src/index.js" type="module"></script>
+</body>
+</html>
