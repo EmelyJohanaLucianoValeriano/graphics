@@ -165,18 +165,19 @@ export class CanvasLocal {
     return {px, py};
   }
 
-  draw3DObject(vertices: {x:number, y:number, z:number}[], faces: number[][]) {
+  // Se añade el tercer argumento originalVertices para estabilizar la cámara
+  draw3DObject(vertices: {x:number, y:number, z:number}[], faces: number[][], originalVertices: {x:number, y:number, z:number}[] = vertices) {
     this.graphics.clearRect(0, 0, this.graphics.canvas.width, this.graphics.canvas.height);
     this.graphics.strokeStyle = '#273b47';
     this.graphics.lineWidth = 1.5;
 
     if (vertices.length === 0) return;
 
-    // AUTO-ESCALA: Calculamos los límites de la figura para que la cámara siempre la enfoque
+    // AUTO-ESCALA FIJA: Calculamos usando los vértices originales para que no palpite
     let minPx = Infinity, maxPx = -Infinity;
     let minPy = Infinity, maxPy = -Infinity;
     
-    let projs = vertices.map(v => {
+    let projsOriginales = originalVertices.map(v => {
         let p = this.project(v.x, v.y, v.z);
         if(p.px < minPx) minPx = p.px;
         if(p.px > maxPx) maxPx = p.px;
@@ -197,9 +198,10 @@ export class CanvasLocal {
     for (let face of faces) {
       this.graphics.beginPath();
       for (let i = 0; i < face.length; i++) {
-        let vIdx = face[i] - 1; // El archivo TXT cuenta desde 1, los arreglos desde 0
+        let vIdx = face[i] - 1; 
         if(vIdx >= 0 && vIdx < vertices.length) {
-            let proj = projs[vIdx];
+            let v = vertices[vIdx];
+            let proj = this.project(v.x, v.y, v.z);
             let sx = cx + proj.px * scale;
             let sy = cy - proj.py * scale; 
 
